@@ -1,0 +1,16 @@
+{
+  "cmake.configureOnOpen": false,
+  "C_Cpp.errorSquiggles": "disabled",
+  "C_Cpp.files.exclude": {
+    "**/.vscode": true,
+    "**/__repo__": true
+  },
+  "C_Cpp.exclusionPolicy": "checkFolders",
+  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+  "cmake.useCMakePresets": "always",
+  "cmake.buildTask": true,
+  "cmake.skipConfigureIfCachePresent": true,
+  "cmake.sourceDirectory": "${command:mcuxpresso.repoPath}/mcuxsdk/cmake/extension/sysbuild",
+  "mcuxpresso.long.path.warn": false,
+  "cmake.ignoreCMakeListsMissing": true
+}

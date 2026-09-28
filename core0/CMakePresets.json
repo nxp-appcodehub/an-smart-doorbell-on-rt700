@@ -1,0 +1,71 @@
+{
+  "version": 7,
+  "cmakeMinimumRequired": {
+    "major": 3
+  },
+  "configurePresets": [
+    {
+      "name": "flash_debug",
+      "displayName": "flash_debug",
+      "generator": "Ninja",
+      "binaryDir": "${fileDir}/../${presetName}",
+      "toolchainFile": "$env{SdkRootDirPath}/mcuxsdk/cmake/toolchain/armgcc.cmake",
+      "inherits": "flash_debug-env",
+      "cacheVariables": {
+        "APP_DIR": {
+          "value": "${fileDir}",
+          "type": "PATH"
+        },
+        "CMAKE_BUILD_TYPE": "flash_debug",
+        "SdkRootDirPath": "$env{SdkRootDirPath}/mcuxsdk",
+        "CONFIG_TOOLCHAIN": "armgcc",
+        "board": "mimxrt700evk",
+        "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "$env{binaryDir}",
+        "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "$env{binaryDir}",
+        "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "$env{binaryDir}",
+        "WEST": "TRUE",
+        "core_id": "cm33_core0",
+        "PrjRootDirPath": "${fileDir}/../"
+      }
+    },
+    {
+      "name": "flash_release",
+      "displayName": "flash_release",
+      "generator": "Ninja",
+      "binaryDir": "${fileDir}/../${presetName}",
+      "toolchainFile": "$env{SdkRootDirPath}/mcuxsdk/cmake/toolchain/armgcc.cmake",
+      "inherits": "flash_release-env",
+      "cacheVariables": {
+        "APP_DIR": {
+          "value": "${fileDir}",
+          "type": "PATH"
+        },
+        "CMAKE_BUILD_TYPE": "flash_release",
+        "SdkRootDirPath": "$env{SdkRootDirPath}/mcuxsdk",
+        "CONFIG_TOOLCHAIN": "armgcc",
+        "board": "mimxrt700evk",
+        "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "$env{binaryDir}",
+        "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "$env{binaryDir}",
+        "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "$env{binaryDir}",
+        "WEST": "TRUE",
+        "core_id": "cm33_core0",
+        "PrjRootDirPath": "${fileDir}/../"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "flash_debug",
+      "displayName": "flash_debug",
+      "configurePreset": "flash_debug"
+    },
+    {
+      "name": "flash_release",
+      "displayName": "flash_release",
+      "configurePreset": "flash_release"
+    }
+  ],
+  "include": [
+    "mcux_include.json"
+  ]
+}

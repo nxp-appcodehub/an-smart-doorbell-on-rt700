@@ -1,0 +1,54 @@
+{
+  "configurations": [
+    {
+      "type": "mcuxpresso-debug",
+        "name": "Debug - core0",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "executable": {
+        "elf": ""
+      },
+      "stopAtSymbol": "main",
+      "probeSerialNumber": "",
+      "isAttach": false,
+      "skipBuildBeforeDebug": false,
+      "gdbInitCommands": [
+        "set remotetimeout 600",
+        "set debug-file-directory",
+        "set non-stop off"
+      ],
+      "gdbServerConfigs": {
+        "linkserver": {},
+        "segger": {"rtos": "GDBServer/RTOSPlugin_FreeRTOS"},
+        "pemicro": {}
+      },
+      "showDevDebugOutput": "none",
+      "domain": "core0"
+    },
+    {
+      "type": "mcuxpresso-debug",
+      "name": "Debug - core1",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "executable": {
+        "elf": ""
+      },
+      "stopAtSymbol": "main",
+      "probeSerialNumber": "",
+      "isAttach": true,
+      "skipBuildBeforeDebug": false,
+      "gdbInitCommands": [
+        "set remotetimeout 600",
+        "set debug-file-directory",
+        "set non-stop off"
+      ],
+      "gdbServerConfigs": {
+        "linkserver": {},
+        "segger": {},
+        "pemicro": {}
+      },
+      "showDevDebugOutput": "none",
+      "domain": "core1"
+    }
+  ]
+}

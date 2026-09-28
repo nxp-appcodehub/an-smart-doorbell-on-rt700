@@ -1,0 +1,13 @@
+#
+
+# Copyright 2024 NXP
+
+#
+
+# SPDX-License-Identifier: BSD-3-Clause
+
+
+
+# rsource "${SdkRootDirPath}/examples/multicore_examples/Kconfig.sysbuild"
+# This is for internal board support
+osource "${SdkRootDirPath}/${board_root}/${board}/Kconfig.sysbuild"

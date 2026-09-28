@@ -1,0 +1,17 @@
+{
+  "version": "25.3",
+  "toolchainPath": "",
+  "linkedProjects": [],
+  "trustZoneType": "none",
+  "multicoreType": "primary",
+  "projectType": "sdk-v2-freestanding",
+  "sdk": {
+    "path": "",
+    "version": "26.6.0",
+    "boardId": "mimxrt700evk",
+    "deviceId": "MIMXRT798S",
+    "coreId": "cm33_core0",
+    "sysbuild": true
+  },
+  "projectName": "mimxrt700evk_doorbell"
+}

@@ -1,0 +1,4 @@
+flash_debug/
+flash_release/
+.vscode/
+core0/mcux_include.json

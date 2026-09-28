@@ -1,0 +1,17 @@
+# It is optional to provide example specific Kconfig.
+
+
+
+mainmenu "smart doorbell"
+
+
+
+# Need to refer the root Kconfig.mcuxpreso to get all Kconfig data
+
+source "${SdkRootDirPath}/Kconfig.mcuxpresso"
+
+
+
+# Board example specific Kconfig can be linked in this way if needed
+
+# osource "${SdkRootDirPath}/${board_root}/${board}/demo_apps/hello_world/Kconfig"
