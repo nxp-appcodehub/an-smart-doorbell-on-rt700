@@ -53,8 +53,8 @@ The table below lists all required hardware connections with their connector loc
 | RT700 EVK Board (Rev B) | Base board | Main processing platform. i.MX RT798S dual Cortex-M33 @ up to 325 MHz. Required: Rev B or later. | [RT700 EVK](https://www.nxp.com/MIMXRT700-EVK) |
 | RGB + IR USB Camera module | J40 | UVC-class MJPEG camera with separate RGB and IR sensors. HM2131 sensor recommended. VGA (640x480) resolution minimum. | Standard UVC dual-sensor module (RGB + IR), USB OTG is used. |
 | 5.5-inch MIPI-DSI LCD | J52 | Primary user display used for GUI rendering and information presentation. | [NXP RK055HDMIPI4MA0](https://www.nxp.com/part/RK055HDMIPI4MA0) |
-| IW61x Wi-Fi Module | J44 | Dual-band 802.11 a/b/g/n/ac Wi-Fi module via SDIO/M.2 interface. | [EAR00422](https://www.digikey.com) |
-| UWB / Radar Module | Arduino headers J5, J6, J23, J24 | Presence detection and low-power wake-on-approach. | ETNA TS250 DEVKIT (contact NXP for availability) |
+| IW61x Wi-Fi Module | J44 | Dual-band 802.11 a/b/g/n/ac Wi-Fi module via SDIO/M.2 interface. | [EAR00422](https://www.mouser.com/en/ProductDetail/Embedded-Artists/EAR00422?qs=P%2FxahI%252BVehmryTBrG%252BqDjA%3D%3D&srsltid=AfmBOooN3fJFnkAuBImZRnLD6mEKB2ojHHhhRudrXmzUV4C6qQ9sBo6I) |
+| UWB / Radar Module | Arduino headers J5, J6, J23, J24 | Presence detection and low-power wake-on-approach. | [ETNA TS250 DEVKIT](https://ultrawideband.truesense.it/products/etna-ts-250-devkit/) |
 | Digital Microphones (DMIC) | U390/U391, U66/U67 | On-board PDM digital microphones for audio capture. Only 2 units are used. | Built into RT700 EVK |
 | WM8962 Audio Codec | U29 | Audio codec for audio output via SAI0. Supports 8 kHz / 16 kHz PCM, 16-bit. Controlled via I2C from Core 0. | Built into RT700 EVK |
 | Speaker (Optional) | J29 (3.5 mm audio jack) | Passive speaker for received audio stream output. | Any standard 8-ohm / 1 W speaker (optional accessory) |
@@ -111,7 +111,7 @@ Install the following tools on a Windows 10/11 x64 development PC before cloning
 ### 3.2 Import MCUXpresso SDK
 
 Import an MCUXpresso SDK that supports the RT700 (version 26.06.00 or later). Detailed guide:
-https://mcuxpresso.nxp.com/mcux-vscode/latest/Working-with-MCUXpresso-SDK.html
+https://mcuxpresso.nxp.com/mcux-vscode/latest/Import-Repository.html#import-repository
 
 
 ### 3.3 Import the Smart Doorbell Project
@@ -159,11 +159,11 @@ an-smart-doorbell-on-rt700/
 1. Right-click the project in the MCUXpresso panel -> **Config** -> **Set Sysbuild** and confirm sysbuild is enabled.
 2. Right-click the project -> **Pristine Build / Rebuild Project**.
 3. A successful build produces:
-   - `flash_debug/core0/mimxrt700evk_doorbell.elf`
+   - `flash_debug/core0/doorbell_cm33_core0.elf`
    - `flash_debug/core1/mimxrt700evk_doorbell_core1.elf`
    - `flash_debug/core1_image.bin` (embedded in Core 0 binary)
 4. Connect the board to the PC via J54 (Micro-USB). Confirm DC power (J45) is connected and SW4 is ON.
-5. Right-click the project -> **Flash the selected target**. Select **core0** and `mimxrt700evk_doorbell.elf`.
+5. Right-click the project -> **Flash the selected target**. Select **core0** and `doorbell_cm33_core0.elf`.
 
 > **Note:** Always build via sysbuild from the workspace root. Building `core0` alone will fail with a missing `core1_image.bin` linker error.
 
@@ -213,7 +213,7 @@ The UWB/Radar module reliably wakes the system when a person enters within appro
 A: Confirm the USB OTG cable for J40 has the ID pin correctly wired (pulled low). Cables without the ID pin wired prevent USB host enumeration of the dual-sensor camera.
 
 **Q: Build fails with "missing core1_image.bin".**
-A: The project must be built using sysbuild from the workspace root, not from inside `core0/`. See the Build Instructions in Section 3.4.
+A: The project must be built using sysbuild from the workspace root, not from inside `core0/`. See the Build Instructions in Section 3.5.
 
 **Q: Face recognition accuracy is low or faces are not recognized.**
 A: Ensure enrollment and recognition are performed under diffuse indoor lighting at 0.5 to 1.5 meters. The default recognition confidence threshold is 0.96 and is configurable via the `mpp_app_params_t.recognition_threshold` field in `core0/source/main.c`.
